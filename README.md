@@ -29,22 +29,10 @@ How to use Jasmine to write a number of tests against a pre-existing application
 4. Loop through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
 5. Loop through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
 6. Ensure the menu element is hidden by default. 
-  - You'll have to analyze the HTML and the CSS to determine how we're performing the hiding/showing of the menu element.
-- Ensure the menu changes visibility when the menu icon is clicked.
-- Ensure when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container. Remember, loadFeed() is asynchronous so this test wil require the use of Jasmine's beforeEach and asynchronous done() function.
-- Ensure when a new feed is loaded by the loadFeed function that the content actually changes. Remember, loadFeed() is asynchronous.
-- Psuedowrote a test that greys out link when previously clicked to visually indicate read. Functionality not built out yet.
+7. You'll have to analyze the HTML and the CSS to determine how we're performing the hiding/showing of the menu element.
+8. Ensure the menu changes visibility when the menu icon is clicked.
+9. Ensure when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container. Remember, loadFeed() is asynchronous so this test wil require the use of Jasmine's beforeEach and asynchronous done() function.
+10. Ensure when a new feed is loaded by the loadFeed function that the content actually changes. Remember, loadFeed() is asynchronous.
+11. Psuedowrote a test that greys out link when previously clicked to visually indicate read. Functionality not built out yet.
 
-### Menu:
-
-- Test is hidden on page load
-- Test menu icon appears on click
-
-### First RSS Entry:
-
-- Test at least one entry displays on load after async call
-
-### RSS Entry Change:
-
-- Test RSS entry changes on menu select
 
