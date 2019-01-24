@@ -80,33 +80,33 @@ $(function () {
        });
    });
 
-   // New test suite that looks for new feed selections
+    // New test suite that looks for new feed selections
    // Test suite for loading new content after initial load
-   describe('New Feed Selection', function() {
+ /* new test suite named "New Feed Selection" */
+ describe ('New Feed Selection', function(){
 
-    const container = document.querySelector('.feed');
-    const firstFeed = [];
+    // Test that ensures when a new feed is loaded by the loadFeed function that the content actually changes.
 
-   
-    beforeEach(function(done) { // Load multiple feeds and compare content to ensure change
+    let firstFeed;
+    let secondFeed;
 
-        
-        loadFeed(0);    // Load first feed
-        
-        
-        Array.from(container.children).forEach(content => { // Store values of first feed
-            firstFeed.push(content.innerText);
-        });
-
-        // Load second feed
-        loadFeed(1, done);
-    });
-      
-      it('test different from the previous test', function() {  // Compare first feed against new feed content
-        Array.from(container.children).forEach( (content, index) => {
-            expect(content.innerText !== firstFeed[index]).toBe(true);
+    beforeEach((done)=>{
+        loadFeed(0, function () {
+            firstFeed = $('.feed').html();
+            done();                
         });
     });
-   });
+
+    it('loads new feed', function(done){
+
+        loadFeed(1, function(){
+            secondFeed = $('.feed').html();
+            expect(secondFeed).not.toBe(firstFeed);
+            /* You should call done function here - This ensures that the second set of feeds are loaded before we actually go and try to compare the values of the feeds. */
+            done();
+        });
+
+    });
+});
+    
 }());
-
