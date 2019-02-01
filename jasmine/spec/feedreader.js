@@ -1,4 +1,3 @@
-
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
@@ -9,40 +8,49 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
-$(function () {
-    "use strict";
-   /* This is our first test suite - a test suite just contains
-   * a related set of tests. This suite is all about the RSS
-   * feeds definitions, the allFeeds variable in our application.
-   */
+$(function() {
+    //"use strict";
+    /* This is our first test suite - a test suite just contains
+    * a related set of tests. This suite is all about the RSS
+    * feeds definitions, the allFeeds variable in our application.
+    */
+    describe('RSS Feeds', function() {
+        /* This is our first test - it tests to make sure that the
+         * allFeeds variable has been defined and that it is not
+         * empty. Experiment with this before you get started on
+         * the rest of this project. What happens when you change
+         * allFeeds in app.js to be an empty array and refresh the
+         * page?
+         */
+        it('Is the feed defined', function() {
+            expect(allFeeds).toBeDefined();
+            expect(allFeeds.length).not.toBe(0);
+        });
 
 
-   // This is the RSS Feeds suite that tests the feeds 
-   describe('RSS Feeds', function () {
+        /* TODO: Write a test that loops through each feed
+         * in the allFeeds object and ensures it has a URL defined
+         * and that the URL is not empty.
+         */
+        it('Urls should be defined', function() {
+            for(i = 0; i < allFeeds.length; i++) {
+                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url.length).not.toBe(0);
+            }
+        });
 
-       
-       it('Is the feeds defined', function () { // checks if allfeeds has been defined and if it is not empty
-           expect(allFeeds).toBeDefined();
-           expect(allFeeds.length).not.toBe(0);
-       });
 
-       
-       it('urls should be defined', function () { // Checks if allFeeds have a url and if the url is not empty
-           for (var i = 0; i < allFeeds.length; i++) {
-               expect(allFeeds[i].url).toBeDefined();
-               expect(allFeeds[i].url.length).not.toBe(0);
-           }
-       });
-
-       
-      // Check if feed's name property is defined and not empty
-       it('Does it have a name', function() {
-          for(let feed of allFeeds) {
-             expect(feed.name).not.toBe(undefined);
-             expect(feed.name).not.toBe('');
-        }
-       });
-   });
+        /* TODO: Write a test that loops through each feed
+         * in the allFeeds object and ensures it has a name defined
+         * and that the name is not empty.
+         */
+         it('Does it have a name', function() {
+            for(i = 0; i < allFeeds.length; i++) {
+                expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name.length).not.toBe(0);
+            }
+        });
+    });
 
 
    // New  suite that will test the menu
@@ -80,7 +88,7 @@ $(function () {
        });
    });
 
-    // New test suite that looks for new feed selections
+   // New test suite that looks for new feed selections
    // Test suite for loading new content after initial load
  /* new test suite named "New Feed Selection" */
  describe ('New Feed Selection', function(){
